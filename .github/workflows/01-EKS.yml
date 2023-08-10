@@ -1,0 +1,24 @@
+name: "01-EKS"
+on:
+  workflow_dispatch:
+
+jobs:
+  Plan_Dev:
+    if: github.ref == 'refs/heads/develop'
+    uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_plan.yml@develop
+    with:
+      path: EKS
+      tf_vars_file: dev.tfvars
+      gh_environment: dev
+    secrets:
+      cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+  Deploy_Dev:
+    needs: Plan_Dev
+    uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_appy.yml@develop
+    with:
+      path: EKS
+      tf_vars_file: dev.tfvars
+      gh_environment: dev
+    secrets:
+      cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
