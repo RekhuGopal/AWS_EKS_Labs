@@ -1,4 +1,5 @@
 ###### root/main.tf
+/*
 module "eks" {
   source                  = "./modules/eks"
   aws_public_subnet       = module.vpc.aws_public_subnet
@@ -27,3 +28,4 @@ module "vpc" {
   rt_route_cidr_block     = "0.0.0.0/0"
 
 }
+*/
