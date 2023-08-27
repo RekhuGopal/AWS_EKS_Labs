@@ -10,7 +10,7 @@ jobs:
       path: EKS
       gh_environment: dev
     secrets:
-      cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      cli_config_credentials_token: ${{ secrets.TFC_API_TOKEN }}
 
   Deploy_Dev:
     needs: Plan_Dev
@@ -19,4 +19,4 @@ jobs:
       path: EKS
       gh_environment: dev
     secrets:
-      cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      cli_config_credentials_token: ${{ secrets.TFC_API_TOKEN }}
