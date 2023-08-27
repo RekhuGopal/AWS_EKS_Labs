@@ -14,6 +14,7 @@ resource "aws_internet_gateway" "cloudquicklabs_gw" {
     Name = var.tags
   }
 }
+
 data "aws_availability_zones" "available" {
 }
 
