@@ -3,10 +3,6 @@ name: "Apply_TF_Plan"
 on:
   workflow_call:
     inputs:
-      path:
-        description: 'Specifies the path of the root terraform module.'
-        required: true
-        type: string
       tf_version:
         description: 'Specifies version of Terraform to use. e.g: 1.1.0 Default=latest.'
         required: false
@@ -29,7 +25,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ${{ inputs.path }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3.1.0
@@ -59,10 +54,3 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-
-      - name: Capture Output in .txt file
-        run: terraform output > ${{ github.workspace }}/output.txt
-
-      - name:  Display Out put file
-        run: |
-         cat ${{ github.workspace }}/output.txt

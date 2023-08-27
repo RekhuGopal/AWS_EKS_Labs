@@ -3,10 +3,6 @@ name: "Build_TF_Plan"
 on:
   workflow_call:
     inputs:
-      path:
-        description: 'Specifies the path of the root terraform module.'
-        required: true
-        type: string
       tf_version:
         description: 'Specifies version of Terraform to use. e.g: 1.1.0 Default=latest.'
         required: false
@@ -28,9 +24,7 @@ jobs:
     environment: ${{ inputs.gh_environment }}
     defaults:
       run:
-        shell: bash
-        working-directory: ${{ inputs.path }}
-        
+        shell: bash    
     steps:
       - name: Checkout
         uses: actions/checkout@v3.1.0
