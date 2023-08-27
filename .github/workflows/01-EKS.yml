@@ -3,18 +3,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  Plan_Dev:
-    if: github.ref == 'refs/heads/develop'
-    uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_plan.yml@develop
+  Plan:
+    uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_plan.yml@main
     with:
       path: EKS
       gh_environment: dev
     secrets:
       cli_config_credentials_token: ${{ secrets.TFC_API_TOKEN }}
 
-  Deploy_Dev:
-    needs: Plan_Dev
-    uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_appy.yml@develop
+  Apply:
+    needs: Plan
+    uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_appy.yml@main
     with:
       path: EKS
       gh_environment: dev
