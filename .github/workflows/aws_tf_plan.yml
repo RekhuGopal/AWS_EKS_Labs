@@ -17,10 +17,6 @@ on:
         required: false
         type: string
         default: null
-      tf_vars_file:
-        description: 'Specifies the Terraform TFVARS file.'
-        required: true
-        type: string
     secrets:
       cli_config_credentials_token:
         description: 'cli config credentials token'
@@ -39,10 +35,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.1.0
         
-      - name: Change file name
-        run: | 
-          mv ${{ github.workspace }}/${{ inputs.path }}/${{ inputs.gh_environment }}.tfvars  ${{ github.workspace }}/${{ inputs.path }}/${{ inputs.gh_environment }}.auto.tfvars 
-
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2.0.2
         with:
