@@ -6,7 +6,6 @@ jobs:
   Plan:
     uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_plan.yml@main
     with:
-      path: EKS
       gh_environment: dev
     secrets:
       cli_config_credentials_token: ${{ secrets.TFC_API_TOKEN }}
@@ -15,7 +14,6 @@ jobs:
     needs: Plan
     uses: RekhuGopal/aws_eks_labs/.github/workflows/aws_tf_appy.yml@main
     with:
-      path: EKS
       gh_environment: dev
     secrets:
       cli_config_credentials_token: ${{ secrets.TFC_API_TOKEN }}
